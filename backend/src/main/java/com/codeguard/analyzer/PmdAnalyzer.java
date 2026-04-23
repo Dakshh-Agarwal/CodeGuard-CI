@@ -34,7 +34,7 @@ public class PmdAnalyzer {
                         .message(rv.getDescription())
                         .lineNumber(rv.getBeginLine())
                         .severity(rv.getRule().getPriority().getName().toUpperCase())
-                        .fileName(rv.getFilename())
+                        .fileName(rv.getFileId().getAbsolutePath())
                         .build();
                 violations.add(v);
             }
