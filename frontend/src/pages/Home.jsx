@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Play, Code2 } from 'lucide-react';
 import CodeEditor from '../components/CodeEditor';

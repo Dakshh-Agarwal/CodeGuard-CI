@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Loader2, CheckCircle2, XCircle, Clock } from 'lucide-react';
 import { getReport } from '../api/reviewApi';
@@ -7,7 +7,6 @@ import ViolationTable from '../components/ViolationTable';
 const Report = () => {
   const { jobId } = useParams();
   const [report, setReport] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let pollInterval;
@@ -18,12 +17,10 @@ const Report = () => {
         setReport(response.data);
         
         if (response.data.status === 'COMPLETED' || response.data.status === 'FAILED') {
-          setLoading(false);
           clearInterval(pollInterval);
         }
       } catch (error) {
         console.error('Error fetching report', error);
-        setLoading(false);
         clearInterval(pollInterval);
       }
     };
